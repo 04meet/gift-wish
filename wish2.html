@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For Ishu ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #5eead4, #99f6e4);
+      color: #083344;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1, h2, p {
+      max-width: 900px;
+    }
+
+    .btn {
+      padding: 12px 26px;
+      margin: 20px;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #0f766e;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: #0f766e;
+      position: relative;
+    }
+
+    .typewriter {
+      font-size: 24px;
+      min-height: 70px;
+      margin-top: 20px;
+      color: #083344;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+      max-width: 900px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      top: -10px;
+      color: rgba(255,255,255,0.9);
+      font-size: 20px;
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section 1: Sorry -->
+  <section>
+    <h1>Hey Ishu ❤️</h1>
+    <p class="typewriter" id="type1"></p>
+    <button class="btn btn-primary" onclick="scrollToSection(1)">Continue 💌</button>
+  </section>
+
+  <!-- Section 2: Feelings -->
+  <section>
+    <h2>From Your Meet 💖</h2>
+    <p class="typewriter" id="type2"></p>
+    <button class="btn btn-primary" onclick="scrollToSection(2)">Something Special 📸</button>
+  </section>
+
+  <!-- Section 3: Photos -->
+  <section>
+    <h2>Our Cute Memories 🥰</h2>
+    <p>Every picture with you is my favorite story.</p>
+
+    <div class="gallery">
+      <!-- Change image names if needed -->
+      <img src="photo1.jpg" alt="Memory 1">
+      <img src="photo2.jpg" alt="Memory 2">
+      <img src="photo3.jpg" alt="Memory 3">
+      <img src="photo4.jpg" alt="Memory 4">
+    </div>
+
+    <button class="btn btn-primary" onclick="scrollToSection(3)">One Last Question 💝</button>
+  </section>
+
+  <!-- Section 4: Valentine Question -->
+  <section>
+    <h1>Ishu, Will You Be My Valentine for forever? 💘</h1>
+    <p>No matter how many times I mess up, my heart always chooses you. Always. 💞</p>
+    <p>I LOVE YOU BAU BAU BAU J BADHU, ALWAYS, FOR INIFNITY 💗</p>
+
+    <div id="buttonContainer">
+      <button class="btn btn-primary" onclick="yesClicked()">Yes ❤️</button>
+      <button class="btn btn-secondary" id="noBtn">No 🙈</button>
+    </div>
+
+    <h2 id="result"></h2>
+  </section>
+
+  <script>
+    // Typewriter texts (you can edit these)
+    const text1 = "Ishu, I know I made too much mistakes unfortunately, and I’m really sorry for that🥺. Please believe me, you mean everything to me and I never want to hurt you.";
+    const text2 = "From the first day till today in future also 😅, my favorite place is always with you. Your smile, your anger, your cute drama and everything else — I love it all. I promise to do better everyday till I do the best for you. Always. 💖 — Yours, Meet";
+
+    function typeText(elementId, text, speed = 40) {
+      let i = 0;
+      const el = document.getElementById(elementId);
+      const interval = setInterval(() => {
+        el.textContent += text.charAt(i);
+        i++;
+        if (i >= text.length) clearInterval(interval);
+      }, speed);
+    }
+
+    typeText("type1", text1, 40);
+    setTimeout(() => typeText("type2", text2, 40), 1500);
+
+    function scrollToSection(index) {
+      document.querySelectorAll("section")[index].scrollIntoView({ behavior: "smooth" });
+    }
+
+    // No button runs away 😏
+    //const noBtn = document.getElementById("noBtn");
+    //noBtn.addEventListener("mouseover", () => {
+    //  const x = Math.random() * (window.innerWidth - 120);
+    //  const y = Math.random() * (window.innerHeight - 60);
+    //  noBtn.style.position = "fixed";
+    //  noBtn.style.left = x + "px";
+    //  noBtn.style.top = y + "px";
+    //});
+
+const noBtn = document.getElementById("noBtn");
+const buttonContainer = document.getElementById("buttonContainer");
+
+// Save original position styles
+function resetNoButton() {
+  noBtn.style.position = "relative";
+  noBtn.style.left = "0px";
+  noBtn.style.top = "0px";
+}
+
+// Make it run away 😏
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 60);
+  noBtn.style.position = "fixed";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+// Reset when user scrolls
+window.addEventListener("scroll", () => {
+  resetNoButton();
+});
+
+    function yesClicked() {
+      document.getElementById("result").innerHTML = "Yayyyy!!! 😭❤️ I promise to keep you the happiest, Ishu 💖 — Love, Meet";
+    }
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+      heart.style.fontSize = (16 + Math.random() * 20) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
